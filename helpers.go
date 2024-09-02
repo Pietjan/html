@@ -1,6 +1,7 @@
 package html
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -905,3 +906,49 @@ func RoleWidget() func(*Element) { return AddAttribute("role", widgetRole) }
 
 // RoleWindow sets role="window"
 func RoleWindow() func(*Element) { return AddAttribute("role", windowRole) }
+
+func Height(h int) func(*Element) { return AddAttribute("height", strconv.Itoa(h)) }
+
+func Width(w int) func(*Element) { return AddAttribute("width", strconv.Itoa(w)) }
+
+func SVG(options ...func(*Element)) Element {
+	return New(svgElement, options...)
+}
+
+func Path(options ...func(*Element)) Element {
+	return New(pathElement, options...)
+}
+
+// ViewBox sets the viewBox attribute
+func ViewBox(x, y, w, h int) func(*Element) {
+	return AddAttribute("viewBox", fmt.Sprintf("%d %d %d %d", x, y, w, h))
+}
+
+// Fill sets the fill attribute
+func Fill(fill string) func(*Element) {
+	return AddAttribute("fill", fill)
+}
+
+// FillRule sets the fill-rule attribute
+func FillRule(rule string) func(*Element) {
+	return AddAttribute("fill-rule", rule)
+}
+
+// ClipRule sets the clip-rule attribute
+func ClipRule(rule string) func(*Element) {
+	return AddAttribute("clip-rule", rule)
+}
+
+// Stroke sets the stroke attribute
+func Stroke(stroke string) func(*Element) {
+	return AddAttribute("stroke", stroke)
+}
+
+// StrokeWidth sets the stroke-width attribute
+func StrokeWidth(width int) func(*Element) {
+	return AddAttribute("stroke-width", strconv.Itoa(width))
+}
+
+func D(d string) func(*Element) {
+	return AddAttribute("d", d)
+}
