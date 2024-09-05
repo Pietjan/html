@@ -411,8 +411,8 @@ func Video(options ...func(*Element)) Element { return New(videoElement, options
 func WordBreak(options ...func(*Element)) Element { return New(wbrElement, options...) }
 
 // InputButton <input type="button">
-func InputButton(value string, options ...func(*Element)) Element {
-	return New(inputElement, append(options, Attribute("type", "button"), Attribute("value", value))...)
+func InputButton(options ...func(*Element)) Element {
+	return New(inputElement, append(options, Attribute("type", "button"))...)
 }
 
 // InputCheckbox <input type="checkbox">
@@ -491,8 +491,8 @@ func InputSearch(options ...func(*Element)) Element {
 }
 
 // InputSubmit <input type="submit">
-func InputSubmit(value string, options ...func(*Element)) Element {
-	return New(inputElement, append(options, Attribute("type", "submit"), Attribute("name", value))...)
+func InputSubmit(options ...func(*Element)) Element {
+	return New(inputElement, append(options, Attribute("type", "submit"))...)
 }
 
 // InputTel <input type="tel">
@@ -699,6 +699,10 @@ func Size(value int) func(*Element) { return Attribute(sizeAttribute, strconv.It
 func Step(value int) func(*Element) { return Attribute(stepAttribute, strconv.Itoa(value)) }
 
 func DataAttr(key, value string) func(*Element) { return Attribute("data-"+key, value) }
+
+func Method(value string) func(*Element) { return Attribute("method", value) }
+
+func Action(value string) func(*Element) { return Attribute("action", value) }
 
 // RoleAlert sets role="alert"
 func RoleAlert() func(*Element) { return Attribute("role", alertRole) }
