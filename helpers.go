@@ -14,7 +14,7 @@ func Content(content string) Element { return Element{Content: content} }
 
 // Anchor <a>: The Anchor element
 func Anchor(href, content string, options ...func(*Element)) Element {
-	return New(aElement, append(options, AddAttribute("href", href), SetContent(content))...)
+	return New(aElement, append(options, Attribute("href", href), SetContent(content))...)
 }
 
 // Abbreviation <abbr>: The Abbreviation element
@@ -68,7 +68,7 @@ func LineBreak(options ...func(*Element)) Element { return New(brElement, option
 
 // Button <button type="button">: The Button element
 func Button(options ...func(*Element)) Element {
-	return New(buttonElement, append([]func(*Element){AddAttribute("type", "button")}, options...)...)
+	return New(buttonElement, append([]func(*Element){Attribute("type", "button")}, options...)...)
 }
 
 // Canvas <canvas>: The Graphics Canvas element
@@ -199,7 +199,7 @@ func InlineFrame(options ...func(*Element)) Element { return New(iframeElement, 
 
 // Image <img>: The HTML Image element
 func Image(src, alt string, options ...func(*Element)) Element {
-	return New(imgElement, append(options, AddAttribute("src", src), AddAttribute("alt", alt))...)
+	return New(imgElement, append(options, Attribute("src", src), Attribute("alt", alt))...)
 }
 
 // Inserted <ins>: The Inserted Text element
@@ -225,8 +225,8 @@ func ListItem(options ...func(*Element)) Element { return New(liElement, options
 func Link(options ...func(*Element)) Element { return New(linkElement, options...) }
 
 // LinkStylesheet <link rel="stylesheet" href="style.css">
-func LinkStylesheet(href string, options ...func(*Element)) Element {
-	return New(linkElement, append(options, AddAttribute("rel", "stylesheet"), AddAttribute("href", href))...)
+func LinkStyleSheet(href string, options ...func(*Element)) Element {
+	return New(linkElement, append(options, Attribute("rel", "stylesheet"), Attribute("href", href))...)
 }
 
 // Main <main>: The Main element
@@ -243,12 +243,12 @@ func Meta(options ...func(*Element)) Element { return New(metaElement, options..
 
 // MetaCharset <meta charset="UTF-8">
 func MetaCharset(charset string, options ...func(*Element)) Element {
-	return New(metaElement, append(options, AddAttribute("charset", charset))...)
+	return New(metaElement, append(options, Attribute("charset", charset))...)
 }
 
 // MetaViewport <meta name="viewport" content="width=device-width, initial-scale=1.0">
 func MetaViewport(content string, options ...func(*Element)) Element {
-	return New(metaElement, append(options, AddAttribute("name", "viewport"), AddAttribute("content", content))...)
+	return New(metaElement, append(options, Attribute("name", "viewport"), Attribute("content", content))...)
 }
 
 // Nav <nav>: The HTML Navigation element
@@ -316,7 +316,7 @@ func Sample(options ...func(*Element)) Element { return New(sampElement, options
 
 // Script <script>: The HTML Script element
 func Script(src string, options ...func(*Element)) Element {
-	return New(scriptElement, append(options, AddAttribute("src", src))...)
+	return New(scriptElement, append(options, Attribute("src", src))...)
 }
 
 // Search <search>: The HTML Search element
@@ -412,504 +412,507 @@ func WordBreak(options ...func(*Element)) Element { return New(wbrElement, optio
 
 // InputButton <input type="button">
 func InputButton(value string, options ...func(*Element)) Element {
-	return New(inputElement, append(options, AddAttribute("type", "button"), AddAttribute("value", value))...)
+	return New(inputElement, append(options, Attribute("type", "button"), Attribute("value", value))...)
 }
 
 // InputCheckbox <input type="checkbox">
-func InputCheckbox(name string, options ...func(*Element)) Element {
-	return New(inputElement, append(options, AddAttribute("type", "checkbox"), AddAttribute("name", name))...)
+func InputCheckbox(options ...func(*Element)) Element {
+	return New(inputElement, append(options, Attribute("type", "checkbox"))...)
 }
 
 // InputColor <input type="color">
-func InputColor(name string, options ...func(*Element)) Element {
-	return New(inputElement, append(options, AddAttribute("type", "color"), AddAttribute("name", name))...)
+func InputColor(options ...func(*Element)) Element {
+	return New(inputElement, append(options, Attribute("type", "color"))...)
 }
 
 // InputDate <input type="date">
-func InputDate(name string, options ...func(*Element)) Element {
-	return New(inputElement, append(options, AddAttribute("type", "date"), AddAttribute("name", name))...)
+func InputDate(options ...func(*Element)) Element {
+	return New(inputElement, append(options, Attribute("type", "date"))...)
 }
 
 // InputDateTimeLocal <input type="datetime-local">
-func InputDateTimeLocal(name string, options ...func(*Element)) Element {
-	return New(inputElement, append(options, AddAttribute("type", "datetime-local"), AddAttribute("name", name))...)
+func InputDateTimeLocal(options ...func(*Element)) Element {
+	return New(inputElement, append(options, Attribute("type", "datetime-local"))...)
 }
 
 // InputEmail <input type="email">
-func InputEmail(name string, options ...func(*Element)) Element {
-	return New(inputElement, append(options, AddAttribute("type", "email"), AddAttribute("name", name))...)
+func InputEmail(options ...func(*Element)) Element {
+	return New(inputElement, append(options, Attribute("type", "email"))...)
 }
 
 // InputFile <input type="file">
-func InputFile(name string, options ...func(*Element)) Element {
-	return New(inputElement, append(options, AddAttribute("type", "file"), AddAttribute("name", name))...)
+func InputFile(options ...func(*Element)) Element {
+	return New(inputElement, append(options, Attribute("type", "file"))...)
 }
 
 // InputHidden <input type="hidden">
-func InputHidden(name string, options ...func(*Element)) Element {
-	return New(inputElement, append(options, AddAttribute("type", "hidden"), AddAttribute("name", name))...)
+func InputHidden(options ...func(*Element)) Element {
+	return New(inputElement, append(options, Attribute("type", "hidden"))...)
 }
 
 // InputImage <input type="image">
-func InputImage(name string, options ...func(*Element)) Element {
-	return New(inputElement, append(options, AddAttribute("type", "image"), AddAttribute("name", name))...)
+func InputImage(options ...func(*Element)) Element {
+	return New(inputElement, append(options, Attribute("type", "image"))...)
 }
 
 // InputMonth <input type="month">
-func InputMonth(name string, options ...func(*Element)) Element {
-	return New(inputElement, append(options, AddAttribute("type", "month"), AddAttribute("name", name))...)
+func InputMonth(options ...func(*Element)) Element {
+	return New(inputElement, append(options, Attribute("type", "month"))...)
 }
 
 // InputNumber <input type="number">
-func InputNumber(name string, options ...func(*Element)) Element {
-	return New(inputElement, append(options, AddAttribute("type", "number"), AddAttribute("name", name))...)
+func InputNumber(options ...func(*Element)) Element {
+	return New(inputElement, append(options, Attribute("type", "number"))...)
 }
 
 // InputPassword <input type="password">
-func InputPassword(name string, options ...func(*Element)) Element {
-	return New(inputElement, append(options, AddAttribute("type", "password"), AddAttribute("name", name))...)
+func InputPassword(options ...func(*Element)) Element {
+	return New(inputElement, append(options, Attribute("type", "password"))...)
 }
 
 // InputRadio <input type="radio">
-func InputRadio(name string, options ...func(*Element)) Element {
-	return New(inputElement, append(options, AddAttribute("type", "radio"), AddAttribute("name", name))...)
+func InputRadio(options ...func(*Element)) Element {
+	return New(inputElement, append(options, Attribute("type", "radio"))...)
 }
 
 // InputRange <input type="range">
-func InputRange(name string, options ...func(*Element)) Element {
-	return New(inputElement, append(options, AddAttribute("type", "range"), AddAttribute("name", name))...)
+func InputRange(options ...func(*Element)) Element {
+	return New(inputElement, append(options, Attribute("type", "range"))...)
 }
 
 // InputReset <input type="reset">
-func InputReset(name string, options ...func(*Element)) Element {
-	return New(inputElement, append(options, AddAttribute("type", "reset"), AddAttribute("name", name))...)
+func InputReset(options ...func(*Element)) Element {
+	return New(inputElement, append(options, Attribute("type", "reset"))...)
 }
 
 // InputSearch <input type="search">
-func InputSearch(name string, options ...func(*Element)) Element {
-	return New(inputElement, append(options, AddAttribute("type", "search"), AddAttribute("name", name))...)
+func InputSearch(options ...func(*Element)) Element {
+	return New(inputElement, append(options, Attribute("type", "search"))...)
 }
 
 // InputSubmit <input type="submit">
 func InputSubmit(value string, options ...func(*Element)) Element {
-	return New(inputElement, append(options, AddAttribute("type", "submit"), AddAttribute("name", value))...)
+	return New(inputElement, append(options, Attribute("type", "submit"), Attribute("name", value))...)
 }
 
 // InputTel <input type="tel">
-func InputTel(name string, options ...func(*Element)) Element {
-	return New(inputElement, append(options, AddAttribute("type", "tel"), AddAttribute("name", name))...)
+func InputTel(options ...func(*Element)) Element {
+	return New(inputElement, append(options, Attribute("type", "tel"))...)
 }
 
 // InputText <input type="text">
-func InputText(name string, options ...func(*Element)) Element {
-	return New(inputElement, append(options, AddAttribute("type", "text"), AddAttribute("name", name))...)
+func InputText(options ...func(*Element)) Element {
+	return New(inputElement, append(options, Attribute("type", "text"))...)
 }
 
 // InputTime <input type="time">
-func InputTime(name string, options ...func(*Element)) Element {
-	return New(inputElement, append(options, AddAttribute("type", "time"), AddAttribute("name", name))...)
+func InputTime(options ...func(*Element)) Element {
+	return New(inputElement, append(options, Attribute("type", "time"))...)
 }
 
 // InputURL <input type="url">
-func InputURL(name string, options ...func(*Element)) Element {
-	return New(inputElement, append(options, AddAttribute("type", "url"), AddAttribute("name", name))...)
+func InputURL(options ...func(*Element)) Element {
+	return New(inputElement, append(options, Attribute("type", "url"))...)
 }
 
 // InputWeek <input type="week">
-func InputWeek(name string, options ...func(*Element)) Element {
-	return New(inputElement, append(options, AddAttribute("type", "week"), AddAttribute("name", name))...)
+func InputWeek(options ...func(*Element)) Element {
+	return New(inputElement, append(options, Attribute("type", "week"))...)
 }
 
+// Value sets the value attribute
+func Value(value string) func(*Element) { return Attribute("value", value) }
+
 // AccessKey sets the accesskey attribute
-func AccessKey(value string) func(*Element) { return AddAttribute(accesskeyAttribute, value) }
+func AccessKey(value string) func(*Element) { return Attribute(accesskeyAttribute, value) }
 
 // AutoCapitalize sets the autocapitalize attribute
-func AutoCapitalize(value string) func(*Element) { return AddAttribute(autocapitalizeAttribute, value) }
+func AutoCapitalize(value string) func(*Element) { return Attribute(autocapitalizeAttribute, value) }
 
 // Autofocus sets the autofocus attribute
-func Autofocus() func(*Element) { return AddAttribute(autofocusAttribute, "") }
+func Autofocus() func(*Element) { return Attribute(autofocusAttribute, "") }
 
 // Charset sets the charset attribute
-func Charset(value string) func(*Element) { return AddAttribute(charsetAttribute, value) }
+func Charset(value string) func(*Element) { return Attribute(charsetAttribute, value) }
 
 // Content sets the content attribute
-func ContentAttr(value string) func(*Element) { return AddAttribute(contentAttribute, value) }
+func ContentAttr(value string) func(*Element) { return Attribute(contentAttribute, value) }
 
 // Class sets the class attribute
-func Class(className string) func(*Element) { return AddAttribute(classAttribute, className) }
+func Class(className string) func(*Element) { return Attribute(classAttribute, className) }
 
 // ContentEditable sets the contenteditable attribute
 func ContentEditable(value string) func(*Element) {
-	return AddAttribute(contenteditableAttribute, value)
+	return Attribute(contenteditableAttribute, value)
 }
 
 // Dir sets the dir attribute
-func Dir(value string) func(*Element) { return AddAttribute(dirAttribute, value) }
+func Dir(value string) func(*Element) { return Attribute(dirAttribute, value) }
 
 // Draggable sets the draggable attribute
 func Draggable(value bool) func(*Element) {
-	return AddAttribute(draggableAttribute, strconv.FormatBool(value))
+	return Attribute(draggableAttribute, strconv.FormatBool(value))
 }
 
 // EnterKeyHint sets the enterkeyhint attribute
-func EnterKeyHint(value string) func(*Element) { return AddAttribute(enterkeyhintAttribute, value) }
+func EnterKeyHint(value string) func(*Element) { return Attribute(enterkeyhintAttribute, value) }
 
 // exportparts sets the exportparts attribute
 func ExportParts(values ...string) func(*Element) {
-	return AddAttribute(exportpartsAttribute, strings.Join(values, ", "))
+	return Attribute(exportpartsAttribute, strings.Join(values, ", "))
 }
 
 // Hidden sets the hidden attribute
-func Hidden() func(*Element) { return AddAttribute(hiddenAttribute, "") }
+func Hidden() func(*Element) { return Attribute(hiddenAttribute, "") }
 
 // ID sets the id attribute
-func ID(id string) func(*Element) { return AddAttribute(idAttribute, id) }
+func ID(id string) func(*Element) { return Attribute(idAttribute, id) }
 
 // Inert sets the inert attribute
-func Inert() func(*Element) { return AddAttribute(inertAttribute, "") }
+func Inert() func(*Element) { return Attribute(inertAttribute, "") }
 
 // InputMode sets the inputmode attribute
-func InputMode(value string) func(*Element) { return AddAttribute(inputmodeAttribute, value) }
+func InputMode(value string) func(*Element) { return Attribute(inputmodeAttribute, value) }
 
 // Is sets the is attribute
-func Is(value string) func(*Element) { return AddAttribute(isAttribute, value) }
+func Is(value string) func(*Element) { return Attribute(isAttribute, value) }
 
 // ItemID sets the itemid attribute
-func ItemID(value string) func(*Element) { return AddAttribute(itemidAttribute, value) }
+func ItemID(value string) func(*Element) { return Attribute(itemidAttribute, value) }
 
 // ItemProp sets the itemprop attribute
-func ItemProp(value string) func(*Element) { return AddAttribute(itempropAttribute, value) }
+func ItemProp(value string) func(*Element) { return Attribute(itempropAttribute, value) }
 
 // ItemRef sets the itemref attribute
-func ItemRef(value string) func(*Element) { return AddAttribute(itemrefAttribute, value) }
+func ItemRef(value string) func(*Element) { return Attribute(itemrefAttribute, value) }
 
 // ItemScope sets the itemscope attribute
-func ItemScope() func(*Element) { return AddAttribute(itemscopeAttribute, "") }
+func ItemScope() func(*Element) { return Attribute(itemscopeAttribute, "") }
 
 // ItemType sets the itemtype attribute
-func ItemType(value string) func(*Element) { return AddAttribute(itemtypeAttribute, value) }
+func ItemType(value string) func(*Element) { return Attribute(itemtypeAttribute, value) }
 
 // Lang sets the lang attribute
-func Lang(value string) func(*Element) { return AddAttribute(langAttribute, value) }
+func Lang(value string) func(*Element) { return Attribute(langAttribute, value) }
 
 // Name sets the name attribute
-func Name(value string) func(*Element) { return AddAttribute("name", value) }
+func Name(value string) func(*Element) { return Attribute("name", value) }
 
 // Nonce sets the nonce attribute
-func Nonce(value string) func(*Element) { return AddAttribute(nonceAttribute, value) }
+func Nonce(value string) func(*Element) { return Attribute(nonceAttribute, value) }
 
 // Part sets the part attribute
-func Part(value string) func(*Element) { return AddAttribute(partAttribute, value) }
+func Part(value string) func(*Element) { return Attribute(partAttribute, value) }
 
 // Popover sets the popover attribute, values: "auto" (default) | "manual"
-func Popover(value string) func(*Element) { return AddAttribute(popoverAttribute, value) }
+func Popover(value string) func(*Element) { return Attribute(popoverAttribute, value) }
 
 // SlotAttr sets the slot attribute
-func SlotAttr(value string) func(*Element) { return AddAttribute(slotAttribute, value) }
+func SlotAttr(value string) func(*Element) { return Attribute(slotAttribute, value) }
 
 // SpellCheck sets the spellcheck attribute
 func SpellCheck(value bool) func(*Element) {
-	return AddAttribute(spellcheckAttribute, strconv.FormatBool(value))
+	return Attribute(spellcheckAttribute, strconv.FormatBool(value))
 }
 
 // StyleAttr sets the style attribute
-func StyleAttr(value string) func(*Element) { return AddAttribute(styleAttribute, value) }
+func StyleAttr(value string) func(*Element) { return Attribute(styleAttribute, value) }
 
 // TabIndex sets the tabindex attribute
-func TabIndex(value int) func(*Element) { return AddAttribute(tabindexAttribute, strconv.Itoa(value)) }
+func TabIndex(value int) func(*Element) { return Attribute(tabindexAttribute, strconv.Itoa(value)) }
 
 // TitleAttr sets the title attribute
-func TitleAttr(value string) func(*Element) { return AddAttribute(titleAttribute, value) }
+func TitleAttr(value string) func(*Element) { return Attribute(titleAttribute, value) }
 
 // Translate sets the translate attribute
 func Translate(value bool) func(*Element) {
-	return AddAttribute(translateAttribute, strconv.FormatBool(value))
+	return Attribute(translateAttribute, strconv.FormatBool(value))
 }
 
 // WriingSuggestions sets the writingsuggestion attribute
 func WritingSuggestions(value bool) func(*Element) {
-	return AddAttribute(writingsuggestionsAttribute, strconv.FormatBool(value))
+	return Attribute(writingsuggestionsAttribute, strconv.FormatBool(value))
 }
 
 // Accept sets the accept attribute
-func Accept(value string) func(*Element) { return AddAttribute(acceptAttribute, value) }
+func Accept(value string) func(*Element) { return Attribute(acceptAttribute, value) }
 
 // Autocomplete sets the autocomplete attribute
-func Autocomplete(value string) func(*Element) { return AddAttribute(autocompleteAttribute, value) }
+func Autocomplete(value string) func(*Element) { return Attribute(autocompleteAttribute, value) }
 
 // Capture sets the capture attribute
-func Capture(value string) func(*Element) { return AddAttribute(captureAttribute, value) }
+func Capture(value string) func(*Element) { return Attribute(captureAttribute, value) }
 
 // crossorigin sets the crossorigin attribute
-func Crossorigin(value string) func(*Element) { return AddAttribute(crossoriginAttribute, value) }
+func Crossorigin(value string) func(*Element) { return Attribute(crossoriginAttribute, value) }
 
 // dirname sets the dirname attribute
-func Dirname(value string) func(*Element) { return AddAttribute(dirnameAttribute, value) }
+func Dirname(value string) func(*Element) { return Attribute(dirnameAttribute, value) }
 
 // disabled sets the disabled attribute
-func Disabled() func(*Element) { return AddAttribute(disabledAttribute, "") }
+func Disabled() func(*Element) { return Attribute(disabledAttribute, "") }
 
 // ElementTiming sets the elementtiming attribute
-func ElementTiming(value string) func(*Element) { return AddAttribute(elementtimingAttribute, value) }
+func ElementTiming(value string) func(*Element) { return Attribute(elementtimingAttribute, value) }
 
 // For sets the for attribute
-func For(value string) func(*Element) { return AddAttribute(forAttribute, value) }
+func For(value string) func(*Element) { return Attribute(forAttribute, value) }
 
 // Max sets the max attribute
-func Max(value string) func(*Element) { return AddAttribute(maxAttribute, value) }
+func Max(value string) func(*Element) { return Attribute(maxAttribute, value) }
 
 // MaxLength sets the maxlength attribute
 func Maxlength(value int) func(*Element) {
-	return AddAttribute(maxlengthAttribute, strconv.Itoa(value))
+	return Attribute(maxlengthAttribute, strconv.Itoa(value))
 }
 
 // Min sets the min attribute
-func Min(value string) func(*Element) { return AddAttribute(minAttribute, value) }
+func Min(value string) func(*Element) { return Attribute(minAttribute, value) }
 
 // MinLength sets the minlength attribute
 func Minlength(value int) func(*Element) {
-	return AddAttribute(minlengthAttribute, strconv.Itoa(value))
+	return Attribute(minlengthAttribute, strconv.Itoa(value))
 }
 
 // Multiple sets the multiple attribute
-func Multiple() func(*Element) { return AddAttribute(multipleAttribute, "") }
+func Multiple() func(*Element) { return Attribute(multipleAttribute, "") }
 
 // Pattern sets the pattern attribute
-func Pattern(value string) func(*Element) { return AddAttribute(patternAttribute, value) }
+func Pattern(value string) func(*Element) { return Attribute(patternAttribute, value) }
 
 // Placeholder sets the placeholder attribute
-func Placeholder(value string) func(*Element) { return AddAttribute(placeholderAttribute, value) }
+func Placeholder(value string) func(*Element) { return Attribute(placeholderAttribute, value) }
 
 // Readonly sets the readonly attribute
-func Readonly() func(*Element) { return AddAttribute(readonlyAttribute, "") }
+func Readonly() func(*Element) { return Attribute(readonlyAttribute, "") }
 
 // Rel sets the rel attribute
-func Rel(value string) func(*Element) { return AddAttribute(relAttribute, value) }
+func Rel(value string) func(*Element) { return Attribute(relAttribute, value) }
 
 // Required sets the required attribute
-func Required() func(*Element) { return AddAttribute(requiredAttribute, "") }
+func Required() func(*Element) { return Attribute(requiredAttribute, "") }
 
 // Size sets the size attribute
-func Size(value int) func(*Element) { return AddAttribute(sizeAttribute, strconv.Itoa(value)) }
+func Size(value int) func(*Element) { return Attribute(sizeAttribute, strconv.Itoa(value)) }
 
 // Step sets the step attribute
-func Step(value int) func(*Element) { return AddAttribute(stepAttribute, strconv.Itoa(value)) }
+func Step(value int) func(*Element) { return Attribute(stepAttribute, strconv.Itoa(value)) }
 
-func DataAttr(key, value string) func(*Element) { return AddAttribute("data-"+key, value) }
+func DataAttr(key, value string) func(*Element) { return Attribute("data-"+key, value) }
 
 // RoleAlert sets role="alert"
-func RoleAlert() func(*Element) { return AddAttribute("role", alertRole) }
+func RoleAlert() func(*Element) { return Attribute("role", alertRole) }
 
 // RoleAlertDialog sets role="alertdialog"
-func RoleAlertDialog() func(*Element) { return AddAttribute("role", alertdialogRole) }
+func RoleAlertDialog() func(*Element) { return Attribute("role", alertdialogRole) }
 
 // RoleApplication sets role="application"
-func RoleApplication() func(*Element) { return AddAttribute("role", applicationRole) }
+func RoleApplication() func(*Element) { return Attribute("role", applicationRole) }
 
 // RoleArticle sets role="article"
-func RoleArticle() func(*Element) { return AddAttribute("role", articleRole) }
+func RoleArticle() func(*Element) { return Attribute("role", articleRole) }
 
 // RoleBanner sets role="banner"
-func RoleBanner() func(*Element) { return AddAttribute("role", bannerRole) }
+func RoleBanner() func(*Element) { return Attribute("role", bannerRole) }
 
 // RoleButton sets role="button"
-func RoleButton() func(*Element) { return AddAttribute("role", buttonRole) }
+func RoleButton() func(*Element) { return Attribute("role", buttonRole) }
 
 // RoleCell sets role="cell"
-func RoleCell() func(*Element) { return AddAttribute("role", cellRole) }
+func RoleCell() func(*Element) { return Attribute("role", cellRole) }
 
 // RoleCheckbox sets role="checkbox"
-func RoleCheckbox() func(*Element) { return AddAttribute("role", checkboxRole) }
+func RoleCheckbox() func(*Element) { return Attribute("role", checkboxRole) }
 
 // RoleColumnheader sets role="columnheader"
-func RoleColumnheader() func(*Element) { return AddAttribute("role", columnheaderRole) }
+func RoleColumnheader() func(*Element) { return Attribute("role", columnheaderRole) }
 
 // RoleCombobox sets role="combobox"
-func RoleCombobox() func(*Element) { return AddAttribute("role", comboboxRole) }
+func RoleCombobox() func(*Element) { return Attribute("role", comboboxRole) }
 
 // RoleCommand sets role="command"
-func RoleCommand() func(*Element) { return AddAttribute("role", commandRole) }
+func RoleCommand() func(*Element) { return Attribute("role", commandRole) }
 
 // RoleComment sets role="comment"
-func RoleComment() func(*Element) { return AddAttribute("role", commentRole) }
+func RoleComment() func(*Element) { return Attribute("role", commentRole) }
 
 // RoleComplementary sets role="complementary"
-func RoleComplementary() func(*Element) { return AddAttribute("role", complementaryRole) }
+func RoleComplementary() func(*Element) { return Attribute("role", complementaryRole) }
 
 // RoleContentinfo sets role="contentinfo"
-func RoleContentinfo() func(*Element) { return AddAttribute("role", contentinfoRole) }
+func RoleContentinfo() func(*Element) { return Attribute("role", contentinfoRole) }
 
 // RoleDefinition sets role="definition"
-func RoleDefinition() func(*Element) { return AddAttribute("role", definitionRole) }
+func RoleDefinition() func(*Element) { return Attribute("role", definitionRole) }
 
 // RoleDialog sets role="dialog"
-func RoleDialog() func(*Element) { return AddAttribute("role", dialogRole) }
+func RoleDialog() func(*Element) { return Attribute("role", dialogRole) }
 
 // RoleDocument sets role="document"
-func RoleDocument() func(*Element) { return AddAttribute("role", documentRole) }
+func RoleDocument() func(*Element) { return Attribute("role", documentRole) }
 
 // RoleFeed sets role="feed"
-func RoleFeed() func(*Element) { return AddAttribute("role", feedRole) }
+func RoleFeed() func(*Element) { return Attribute("role", feedRole) }
 
 // RoleFigure sets role="figure"
-func RoleFigure() func(*Element) { return AddAttribute("role", figureRole) }
+func RoleFigure() func(*Element) { return Attribute("role", figureRole) }
 
 // RoleForm sets role="form"
-func RoleForm() func(*Element) { return AddAttribute("role", formRole) }
+func RoleForm() func(*Element) { return Attribute("role", formRole) }
 
 // RoleGrid sets role="grid"
-func RoleGrid() func(*Element) { return AddAttribute("role", gridRole) }
+func RoleGrid() func(*Element) { return Attribute("role", gridRole) }
 
 // RoleGridCell sets role="gridcell"
-func RoleGridCell() func(*Element) { return AddAttribute("role", gridcellRole) }
+func RoleGridCell() func(*Element) { return Attribute("role", gridcellRole) }
 
 // RoleGroup sets role="group"
-func RoleGroup() func(*Element) { return AddAttribute("role", groupRole) }
+func RoleGroup() func(*Element) { return Attribute("role", groupRole) }
 
 // RoleHeading sets role="heading"
-func RoleHeading() func(*Element) { return AddAttribute("role", headingRole) }
+func RoleHeading() func(*Element) { return Attribute("role", headingRole) }
 
 // RoleImg sets role="img"
-func RoleImg() func(*Element) { return AddAttribute("role", imgRole) }
+func RoleImg() func(*Element) { return Attribute("role", imgRole) }
 
 // RoleInput sets role="input"
-func RoleInput() func(*Element) { return AddAttribute("role", inputRole) }
+func RoleInput() func(*Element) { return Attribute("role", inputRole) }
 
 // RoleLandmark sets role="landmark"
-func RoleLandmark() func(*Element) { return AddAttribute("role", landmarkRole) }
+func RoleLandmark() func(*Element) { return Attribute("role", landmarkRole) }
 
 // RoleLink sets role="link"
-func RoleLink() func(*Element) { return AddAttribute("role", linkRole) }
+func RoleLink() func(*Element) { return Attribute("role", linkRole) }
 
 // RoleList sets role="list"
-func RoleList() func(*Element) { return AddAttribute("role", listRole) }
+func RoleList() func(*Element) { return Attribute("role", listRole) }
 
 // RoleListbox sets role="listbox"
-func RoleListbox() func(*Element) { return AddAttribute("role", listboxRole) }
+func RoleListbox() func(*Element) { return Attribute("role", listboxRole) }
 
 // RoleListitem sets role="listitem"
-func RoleListitem() func(*Element) { return AddAttribute("role", listitemRole) }
+func RoleListitem() func(*Element) { return Attribute("role", listitemRole) }
 
 // RoleLog sets role="log"
-func RoleLog() func(*Element) { return AddAttribute("role", logRole) }
+func RoleLog() func(*Element) { return Attribute("role", logRole) }
 
 // RoleMain sets role="main"
-func RoleMain() func(*Element) { return AddAttribute("role", mainRole) }
+func RoleMain() func(*Element) { return Attribute("role", mainRole) }
 
 // RoleMarquee sets role="marquee"
-func RoleMarquee() func(*Element) { return AddAttribute("role", marqueeRole) }
+func RoleMarquee() func(*Element) { return Attribute("role", marqueeRole) }
 
 // RoleMath sets role="math"
-func RoleMath() func(*Element) { return AddAttribute("role", mathRole) }
+func RoleMath() func(*Element) { return Attribute("role", mathRole) }
 
 // RoleMenu sets role="menu"
-func RoleMenu() func(*Element) { return AddAttribute("role", menuRole) }
+func RoleMenu() func(*Element) { return Attribute("role", menuRole) }
 
 // RoleMenubar sets role="menubar"
-func RoleMenubar() func(*Element) { return AddAttribute("role", menubarRole) }
+func RoleMenubar() func(*Element) { return Attribute("role", menubarRole) }
 
 // RoleNavigation sets role="navigation"
-func RoleNavigation() func(*Element) { return AddAttribute("role", navigationRole) }
+func RoleNavigation() func(*Element) { return Attribute("role", navigationRole) }
 
 // RoleNone sets role="none"
-func RoleNone() func(*Element) { return AddAttribute("role", noneRole) }
+func RoleNone() func(*Element) { return Attribute("role", noneRole) }
 
 // RoleNote sets role="note"
-func RoleNote() func(*Element) { return AddAttribute("role", noteRole) }
+func RoleNote() func(*Element) { return Attribute("role", noteRole) }
 
 // RoleOption sets role="option"
-func RoleOption() func(*Element) { return AddAttribute("role", optionRole) }
+func RoleOption() func(*Element) { return Attribute("role", optionRole) }
 
 // RolePresentation sets role="presentation"
-func RolePresentation() func(*Element) { return AddAttribute("role", presentationRole) }
+func RolePresentation() func(*Element) { return Attribute("role", presentationRole) }
 
 // RoleProgressBar sets role="progressbar"
-func RoleProgressBar() func(*Element) { return AddAttribute("role", progressbarRole) }
+func RoleProgressBar() func(*Element) { return Attribute("role", progressbarRole) }
 
 // RoleRadio sets role="radio"
-func RoleRadio() func(*Element) { return AddAttribute("role", radioRole) }
+func RoleRadio() func(*Element) { return Attribute("role", radioRole) }
 
 // RoleRadiogroup sets role="radiogroup"
-func RoleRadiogroup() func(*Element) { return AddAttribute("role", radiogroupRole) }
+func RoleRadiogroup() func(*Element) { return Attribute("role", radiogroupRole) }
 
 // RoleRegion sets role="region"
-func RoleRegion() func(*Element) { return AddAttribute("role", regionRole) }
+func RoleRegion() func(*Element) { return Attribute("role", regionRole) }
 
 // RoleRow sets role="row"
-func RoleRow() func(*Element) { return AddAttribute("role", rowRole) }
+func RoleRow() func(*Element) { return Attribute("role", rowRole) }
 
 // RoleRowgroup sets role="rowgroup"
-func RoleRowgroup() func(*Element) { return AddAttribute("role", rowgroupRole) }
+func RoleRowgroup() func(*Element) { return Attribute("role", rowgroupRole) }
 
 // RoleRowheader sets role="rowheader"
-func RoleRowheader() func(*Element) { return AddAttribute("role", rowheaderRole) }
+func RoleRowheader() func(*Element) { return Attribute("role", rowheaderRole) }
 
 // RoleScrollbar sets role="scrollbar"
-func RoleScrollbar() func(*Element) { return AddAttribute("role", scrollbarRole) }
+func RoleScrollbar() func(*Element) { return Attribute("role", scrollbarRole) }
 
 // RoleSearch sets role="search"
-func RoleSearch() func(*Element) { return AddAttribute("role", searchRole) }
+func RoleSearch() func(*Element) { return Attribute("role", searchRole) }
 
 // RoleSearchbox sets role="searchbox"
-func RoleSearchbox() func(*Element) { return AddAttribute("role", searchboxRole) }
+func RoleSearchbox() func(*Element) { return Attribute("role", searchboxRole) }
 
 // RoleSeparator sets role="separator"
-func RoleSeparator() func(*Element) { return AddAttribute("role", separatorRole) }
+func RoleSeparator() func(*Element) { return Attribute("role", separatorRole) }
 
 // RoleSlider sets role="slider"
-func RoleSlider() func(*Element) { return AddAttribute("role", sliderRole) }
+func RoleSlider() func(*Element) { return Attribute("role", sliderRole) }
 
 // RoleSpinbutton sets role="spinbutton"
-func RoleSpinbutton() func(*Element) { return AddAttribute("role", spinbuttonRole) }
+func RoleSpinbutton() func(*Element) { return Attribute("role", spinbuttonRole) }
 
 // RoleStatus sets role="status"
-func RoleStatus() func(*Element) { return AddAttribute("role", statusRole) }
+func RoleStatus() func(*Element) { return Attribute("role", statusRole) }
 
 // RoleSwitch sets role="switch"
-func RoleSwitch() func(*Element) { return AddAttribute("role", switchRole) }
+func RoleSwitch() func(*Element) { return Attribute("role", switchRole) }
 
 // RoleTab sets role="tab"
-func RoleTab() func(*Element) { return AddAttribute("role", tabRole) }
+func RoleTab() func(*Element) { return Attribute("role", tabRole) }
 
 // RoleTable sets role="table"
-func RoleTable() func(*Element) { return AddAttribute("role", tableRole) }
+func RoleTable() func(*Element) { return Attribute("role", tableRole) }
 
 // RoleTablist sets role="tablist"
-func RoleTablist() func(*Element) { return AddAttribute("role", tablistRole) }
+func RoleTablist() func(*Element) { return Attribute("role", tablistRole) }
 
 // RoleTerm sets role="term"
-func RoleTerm() func(*Element) { return AddAttribute("role", termRole) }
+func RoleTerm() func(*Element) { return Attribute("role", termRole) }
 
 // RoleTextbox sets role="textbox"
-func RoleTextbox() func(*Element) { return AddAttribute("role", textboxRole) }
+func RoleTextbox() func(*Element) { return Attribute("role", textboxRole) }
 
 // RoleTimer sets role="timer"
-func RoleTimer() func(*Element) { return AddAttribute("role", timerRole) }
+func RoleTimer() func(*Element) { return Attribute("role", timerRole) }
 
 // RoleToolbar sets role="toolbar"
-func RoleToolbar() func(*Element) { return AddAttribute("role", toolbarRole) }
+func RoleToolbar() func(*Element) { return Attribute("role", toolbarRole) }
 
 // RoleTooltip sets role="tooltip"
-func RoleTooltip() func(*Element) { return AddAttribute("role", tooltipRole) }
+func RoleTooltip() func(*Element) { return Attribute("role", tooltipRole) }
 
 // RoleTree sets role="tree"
-func RoleTree() func(*Element) { return AddAttribute("role", treeRole) }
+func RoleTree() func(*Element) { return Attribute("role", treeRole) }
 
 // RoleTreegrid sets role="treegrid"
-func RoleTreegrid() func(*Element) { return AddAttribute("role", treegridRole) }
+func RoleTreegrid() func(*Element) { return Attribute("role", treegridRole) }
 
 // RoleTreeitem sets role="treeitem"
-func RoleTreeitem() func(*Element) { return AddAttribute("role", treeitemRole) }
+func RoleTreeitem() func(*Element) { return Attribute("role", treeitemRole) }
 
 // RoleWidget sets role="widget"
-func RoleWidget() func(*Element) { return AddAttribute("role", widgetRole) }
+func RoleWidget() func(*Element) { return Attribute("role", widgetRole) }
 
 // RoleWindow sets role="window"
-func RoleWindow() func(*Element) { return AddAttribute("role", windowRole) }
+func RoleWindow() func(*Element) { return Attribute("role", windowRole) }
 
-func Height(h int) func(*Element) { return AddAttribute("height", strconv.Itoa(h)) }
+func Height(h int) func(*Element) { return Attribute("height", strconv.Itoa(h)) }
 
-func Width(w int) func(*Element) { return AddAttribute("width", strconv.Itoa(w)) }
+func Width(w int) func(*Element) { return Attribute("width", strconv.Itoa(w)) }
 
 func SVG(options ...func(*Element)) Element {
 	return New(svgElement, options...)
@@ -921,34 +924,34 @@ func Path(options ...func(*Element)) Element {
 
 // ViewBox sets the viewBox attribute
 func ViewBox(x, y, w, h int) func(*Element) {
-	return AddAttribute("viewBox", fmt.Sprintf("%d %d %d %d", x, y, w, h))
+	return Attribute("viewBox", fmt.Sprintf("%d %d %d %d", x, y, w, h))
 }
 
 // Fill sets the fill attribute
 func Fill(fill string) func(*Element) {
-	return AddAttribute("fill", fill)
+	return Attribute("fill", fill)
 }
 
 // FillRule sets the fill-rule attribute
 func FillRule(rule string) func(*Element) {
-	return AddAttribute("fill-rule", rule)
+	return Attribute("fill-rule", rule)
 }
 
 // ClipRule sets the clip-rule attribute
 func ClipRule(rule string) func(*Element) {
-	return AddAttribute("clip-rule", rule)
+	return Attribute("clip-rule", rule)
 }
 
 // Stroke sets the stroke attribute
 func Stroke(stroke string) func(*Element) {
-	return AddAttribute("stroke", stroke)
+	return Attribute("stroke", stroke)
 }
 
 // StrokeWidth sets the stroke-width attribute
 func StrokeWidth(width int) func(*Element) {
-	return AddAttribute("stroke-width", strconv.Itoa(width))
+	return Attribute("stroke-width", strconv.Itoa(width))
 }
 
 func D(d string) func(*Element) {
-	return AddAttribute("d", d)
+	return Attribute("d", d)
 }

@@ -25,8 +25,8 @@ func (e Element) String() string {
 	return b.String()
 }
 
-// AddAttribute sets an attribute, overwriting any existing value with the same key
-func AddAttribute(key, value string) func(*Element) {
+// Attribute sets an attribute, overwriting any existing value with the same key
+func Attribute(key, value string) func(*Element) {
 	return func(e *Element) {
 		e.Attributes[key] = value
 	}
@@ -36,6 +36,12 @@ func AddAttribute(key, value string) func(*Element) {
 func AddAttributes(attributes map[string]string) func(*Element) {
 	return func(e *Element) {
 		e.Attributes.Merge(attributes)
+	}
+}
+
+func Component(nodes ...Element) func(*Element) {
+	return func(e *Element) {
+		e.Nodes = nodes
 	}
 }
 
