@@ -7,7 +7,7 @@ import (
 )
 
 var singleLineElements = []string{
-	metaElement, linkElement, titleElement, spanElement, h1Element, h2Element, h3Element, h4Element, h5Element, h6Element,
+	metaElement, linkElement, titleElement, spanElement, h1Element, h2Element, h3Element, h4Element, h5Element, h6Element, tdElement, thElement, preElement,
 }
 
 var inlineElements = []string{
@@ -43,7 +43,7 @@ func ElementWriter(w io.Writer, element Element) {
 		return
 	}
 
-	singleLine := slices.Contains(singleLineElements, element.Tag)
+	singleLine := slices.Contains(singleLineElements, element.Tag) || len(element.Nodes) == 0
 	if len(element.Nodes) == 0 && element.Content == "" || singleLine {
 		fmt.Fprintf(w, "%s</%s>", element.Content, element.Tag)
 		if !slices.Contains(inlineElements, element.Tag) {
